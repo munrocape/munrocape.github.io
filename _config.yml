@@ -1,7 +1,7 @@
 # Site settings
 title: Zach Munro-Cape 
 email: zach.munrocape@gmail.com
-description: Personal website and blog for Zach Munro-Cape.
+description: Personal blog for Zach Munro-Cape.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://munrocape.com" # the base hostname & protocol for your site
 twitter_username: munrocape
