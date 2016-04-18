@@ -1,0 +1,46 @@
+#! /bin/sh
+
+# argument checking - we need a title
+if [ $# -eq 0 ]
+    then
+    echo missing expected post name
+    exit 1
+fi
+
+# construct our name 
+y=`date +%Y`
+m=`date +%m`
+d=`date +%d`
+H=`date +%H`
+M=`date +%M`
+S=`date +%S`
+fname=$y-$m-$d-$1.md
+
+# check to see if this name exists
+if [ -f _posts/$fname ]
+    then
+    echo that file already exists in _posts: $fname
+    exit 1
+fi
+
+# can we write the default header - yes we can
+
+#---
+#layout: post
+#title:  "Welcome to Jekyll!"
+#date:   2016-04-04 18:53:34
+#categories: jekyll update
+#---
+
+fpath=_posts/$fname
+#echo $fpath
+touch $fpath
+echo "---" >> $fpath
+echo "layout: post" >> $fpath
+echo title: $1 >> $fpath
+echo date: $y-$m-$d $H:$M:$S >> $fpath
+echo "categories: " >> $fpath
+echo "---" >> $fpath
+exit 0
+
+
