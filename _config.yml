@@ -10,6 +10,3 @@ github_username: munrocape
 # Build settings
 markdown: kramdown
 
-# Gems
-gems:
-    - jekyll-gist
