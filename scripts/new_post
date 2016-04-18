@@ -1,13 +1,13 @@
 #! /bin/sh
 
-# argument checking - we need a title
+# ensure our title was passed in 
 if [ $# -eq 0 ]
     then
     echo missing expected post name
     exit 1
 fi
 
-# construct our name 
+# construct our filename
 y=`date +%Y`
 m=`date +%m`
 d=`date +%d`
@@ -16,15 +16,14 @@ M=`date +%M`
 S=`date +%S`
 fname=$y-$m-$d-$1.md
 
-# check to see if this name exists
+# do not overwrite an existing file
 if [ -f _posts/$fname ]
     then
     echo that file already exists in _posts: $fname
     exit 1
 fi
 
-# can we write the default header - yes we can
-
+# write the default header
 #---
 #layout: post
 #title:  "Welcome to Jekyll!"
@@ -33,14 +32,11 @@ fi
 #---
 
 fpath=_posts/$fname
-#echo $fpath
 touch $fpath
 echo "---" >> $fpath
 echo "layout: post" >> $fpath
-echo title: $1 >> $fpath
+echo title: '"'$1'"' >> $fpath
 echo date: $y-$m-$d $H:$M:$S >> $fpath
 echo "categories: " >> $fpath
 echo "---" >> $fpath
 exit 0
-
-
