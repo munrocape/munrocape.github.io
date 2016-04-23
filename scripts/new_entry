@@ -1,0 +1,47 @@
+#! /bin/sh
+
+# ensure our title was passed in 
+if [ $# -eq 1 ]
+    then
+    echo missing expected post name
+    exit 1
+fi
+
+dir=$1
+fname=$2
+
+# do not overwrite an existing file
+if [ -f $dir/$fname ]
+    then
+    echo that file already exists in _posts: $fname
+    exit 1
+fi
+
+# write the default header
+#---
+#layout: post
+#title:  "Welcome to Jekyll!"
+#date:   2016-04-04 18:53:34
+#categories: jekyll update
+#---
+
+fpath=$dir/$fname
+touch $fpath
+echo "---" >> $fpath
+echo "layout: post" >> $fpath
+echo title: '"'$1'"' >> $fpath
+if [ $1 = "_posts" ]
+	then
+	y=`date +%Y`
+	m=`date +%m`
+	d=`date +%d`
+	H=`date +%H`
+	M=`date +%M`
+	S=`date +%S`
+	echo date: $y-$m-$d $H:$M:$S >> $fpath
+else
+	echo date: >> $fpath
+fi
+echo "categories: " >> $fpath
+echo "---" >> $fpath
+exit 0

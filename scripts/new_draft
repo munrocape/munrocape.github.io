@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# construct our filename
+fname=$1.md
+
+sh scripts/new_entry _drafts $fname
