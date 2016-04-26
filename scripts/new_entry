@@ -29,7 +29,7 @@ fpath=$dir/$fname
 touch $fpath
 echo "---" >> $fpath
 echo "layout: post" >> $fpath
-echo title: '"'$1'"' >> $fpath
+echo title: '"'$2'"' >> $fpath
 if [ $1 = "_posts" ]
 	then
 	y=`date +%Y`
